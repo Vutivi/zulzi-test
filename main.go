@@ -38,7 +38,7 @@ func (p *Product) String() string  {
     return fmt.Sprintf("Product{Id: %d, Name: %s}\n", p.Id, p.Name)
 }
 
-func ProductInProducts(product *Product, products []*Product) bool {
+func productInProducts(product *Product, products []*Product) bool {
 	for _, element := range products {
 		if element == product {
 			return true
@@ -65,16 +65,13 @@ func main() {
 		fmt.Printf("\n\n")
 
 		uniqueProducts := make([]*Product, 0)
-		for i := 0; i < len(products) - 1; i++ {
+		for i := 0; i < len(products); i++ {
 			product := products[i]
 
-			if !ProductInProducts(product, uniqueProducts) {
+			if !productInProducts(product, uniqueProducts) {
 				uniqueProducts = append(uniqueProducts, product)
 			}
 		}
-
-		fmt.Printf("Initial solution \n\n")
-		fmt.Printf("products: %+v", uniqueProducts)
 
     /// Task: given products - construct a list of unique products where all the duplicates have been removed
     /// print the list of unique products.
