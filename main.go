@@ -2,8 +2,10 @@ package main
 
 
 import (
-    "fmt"
+  "fmt"
 	"math/rand"
+	"time"
+
 )
 
 
@@ -38,13 +40,26 @@ func (p *Product) String() string  {
     return fmt.Sprintf("Product{Id: %d, Name: %s}\n", p.Id, p.Name)
 }
 
-func productInProducts(product *Product, products []*Product) bool {
+func ProductInProducts(product *Product, products []*Product) bool {
 	for _, element := range products {
 		if element == product {
 			return true
 		}
 	}
 	return false
+}
+
+func LinearDedupProducts(products []*Product) []*Product{
+	uniqueProducts := make([]*Product, 0)
+	for i := 0; i < len(products); i++ {
+		product := products[i]
+		
+		if !ProductInProducts(product, uniqueProducts) {
+			uniqueProducts = append(uniqueProducts, product)
+		}
+	}
+
+	return uniqueProducts
 }
 
 
@@ -64,19 +79,18 @@ func main() {
     fmt.Printf("products: %+v", products)
 		fmt.Printf("\n\n")
 
-		uniqueProducts := make([]*Product, 0)
-		for i := 0; i < len(products); i++ {
-			product := products[i]
-
-			if !productInProducts(product, uniqueProducts) {
-				uniqueProducts = append(uniqueProducts, product)
-			}
-		}
-
     /// Task: given products - construct a list of unique products where all the duplicates have been removed
     /// print the list of unique products.
     /// vvvv YOUR CODE GOES HERE vvvv ///
-    
+		// This solution takes linear time to run as it
+		// checks every element in the slice
+		fmt.Printf("O(n) solution\n")
+		start := time.Now()
+		uniqueProducts := LinearDedupProducts(products)
+		fmt.Println("Time Taken: ", time.Since(start))
+		fmt.Printf("products: %+v", uniqueProducts)
+		fmt.Printf("\n\n")
+
 
     /// ^^^^ YOUR CODE GOES HERE ^^^^ /// 
 }
