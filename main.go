@@ -93,7 +93,7 @@ func main() {
     /// vvvv YOUR CODE GOES HERE vvvv ///
 
 		// This solution takes linear time to run as it
-		// checks it loops through the entire slice to check
+		// loops through the entire slice to check
 		// if the product is included
 		fmt.Printf("O(n) solution\n")
 		start := time.Now()
