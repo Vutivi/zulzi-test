@@ -32,3 +32,17 @@ func TestLinearDedupProducts(t *testing.T){
 	}
 }
 
+func TestLogarithmicDedupProducts(t *testing.T){
+	product := &Product{Name: "test", Id: 1}
+	products := make([]*Product, 0)
+	products = append(products, product)
+	products = append(products, product)
+
+	got := len(LogarithmicDedupProducts(products))
+	want := 1
+
+	if got != want {
+			t.Errorf("got %v, wanted %v", got, want)
+	}
+}
+
