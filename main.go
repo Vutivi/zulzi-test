@@ -38,7 +38,7 @@ func (p *Product) String() string  {
     return fmt.Sprintf("Product{Id: %d, Name: %s}\n", p.Id, p.Name)
 }
 
-func productInProducts(product *Product, products []*Product) bool {
+func ProductInProducts(product *Product, products []*Product) bool {
 	for _, element := range products {
 		if element == product {
 			return true
@@ -68,7 +68,7 @@ func main() {
 		for i := 0; i < len(products) - 1; i++ {
 			product := products[i]
 
-			if !productInProducts(product, uniqueProducts) {
+			if !ProductInProducts(product, uniqueProducts) {
 				uniqueProducts = append(uniqueProducts, product)
 			}
 		}
