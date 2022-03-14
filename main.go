@@ -103,9 +103,8 @@ func main() {
 		fmt.Printf("\n\n")
 
 		// This solution takes a logarithmic time to run as it
-		// reduces the number of operations are reduced on the
-		// next run for the same product. The more the number of
-		// input the more the number of size
+		// reduces the number of operations on the
+		// next run for the same product.
 		fmt.Printf("O(log n) solution \n")
 		onStart := time.Now()
 		logarithmicProducts := LogarithmicDedupProducts(products)
